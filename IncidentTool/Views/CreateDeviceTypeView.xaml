@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="IncidentTool.Views.CreateDeviceTypeView"   
+    xmlns:vm="using:IncidentTool.ViewModels"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IncidentTool.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <!-- Resources (binding met CreateDeviceTypeViewModel) -->
+    <Page.Resources>
+        <vm:CreateDeviceTypeViewModel x:Key="createDeviceTypeViewModel"/>
+    </Page.Resources>
+
+    <Grid>
+        <RelativePanel Padding="20">
+            <!-- Titel -->
+            <TextBlock Name="Title" Text="MAAK EEN TOESTELTYPE AAN" Foreground="White" FontSize="36" FontWeight="Bold"/>
+            
+            <!-- Description -->
+            <TextBlock Name="DescriptionTextBlock" Text="Omschrijving" Foreground="White" FontSize="24" Margin="0,20,0,0"
+                       RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="Title"/>
+            <TextBox Name="DescriptionTextBox" RelativePanel.RightOf="DescriptionTextBlock" RelativePanel.Below="Title"
+                     Margin="20,20,0,0" Width="300" Foreground="#FF007689"
+                     Text="{Binding Description, Source={StaticResource createDeviceTypeViewModel}, Mode=TwoWay}"/>
+
+            <!-- Create-knop -->
+            <Button Name="CreateButton" Content="Maak aan" Foreground="White" FontSize="24" Margin="20,35,0,0"
+                    RelativePanel.Below="DescriptionTextBlock" RelativePanel.AlignLeftWith="DescriptionTextBlock"
+                    Command="{Binding CreateDeviceTypeCommand, Source={StaticResource createDeviceTypeViewModel}}"/>
+
+            <!-- Melding -->
+            <TextBlock Name="MessageTextBlock" Text="{Binding Message, Source={StaticResource createDeviceTypeViewModel}}"
+                       RelativePanel.Below="CreateButton" Margin="0,20,0,0" Foreground="#FF007689"/>
+        </RelativePanel>
+    </Grid>
+</Page>

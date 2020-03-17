@@ -1,0 +1,1 @@
+C:\Projects\UWP\IncidentTool\IncidentTool\IncidentTool.csproj;x86
